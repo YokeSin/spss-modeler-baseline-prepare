@@ -1,26 +1,16 @@
 {
   "mcpServers": {
     "spss-clemb-mcp": {
-      "command": "uv",
-      "args": [
-        "run",
-        "python",
-        "-m",
-        "spss_clemb_mcp.server"
-      ],
+      "command": "python",
+      "args": ["-m", "spss_clemb_mcp.server"],
       "cwd": "<path-to-spss-clemb-mcp>",
       "alwaysAllow": [
         "execute_clemb"
       ]
     },
     "ibm-docs": {
-      "command": "uv",
-      "args": [
-        "run",
-        "python",
-        "-m",
-        "ibm_docs.server"
-      ],
+      "command": "python",
+      "args": ["-m", "ibm_docs.server"],
       "cwd": "<path-to-ibm-docs-mcp>",
       "alwaysAllow": [
         "search_ibm_docs",

@@ -1,4 +1,4 @@
-# spss-modeler-baseline-prepare
+# SPSS Modeler Baseline AutoModel Skill
 
 SPSS Modeler でベースライン自動モデル(`.str`)を作るための、IBM Bob 用スキルとエージェント定義をまとめたリポジトリ。
 
@@ -7,8 +7,8 @@ CSV 等の入力データを与えると、IBM Bob が Jython スクリプトを
 ## 動作環境
 
 - Windows
-- Python 3.10 以上
-- SPSS Modeler 19.0(`clemb` 同梱版)
+- Python 3.10 以上(必須。未インストールでは動作しない)
+- SPSS Modeler 19.0(必須。未インストールでは動作しない)
 - Jython 2.7(SPSS Modeler に内包)
 - IBM Bob
 
@@ -19,13 +19,13 @@ CSV 等の入力データを与えると、IBM Bob が Jython スクリプトを
 | 名前 | 用途 | 入手先 |
 |---|---|---|
 | `spss-clemb-mcp` | SPSS Modeler の `clemb` 経由で Jython を実行 | <https://github.com/hkwd/spss-clemb-mcp> |
-| `ibm-docs-mcp` | SPSS Modeler ノード仕様の裏取り | <https://qiita.com/spssfun2017/items/e6142dfa2692a89bec0d> |
+| `ibm-docs-mcp` | SPSS Modeler ノード仕様の裏取り | <https://github.com/hkwd/ibm-docs-mcp> |
 
 ## セットアップ
 
 1. 本リポジトリを clone する
 2. 上記 2 つの MCP サーバを、各リポジトリのページに記載された手順でセットアップする
-3. [.bob/mcp.json](.bob/mcp.json) を開き、2 箇所の `<path-to-...>` を実際の MCP サーバ配置パスに書き換える
+3. [.bob/mcp_settings.json](.bob/mcp_settings.json) を開き、2 箇所の `<path-to-...>` を実際の MCP サーバ配置パスに書き換える
    - 例: `"cwd": "C:/Users/your-name/.mcp-servers/spss-clemb-mcp"`
 4. IBM Bob を本リポジトリのルートで起動する
 
@@ -51,9 +51,13 @@ CSV 等の入力データを与えると、IBM Bob が Jython スクリプトを
 ```
 .
 ├── .bob/
-│   ├── mcp.json                                  # MCP 接続定義
+│   ├── mcp_settings.json                         # MCP 接続定義
 │   └── skills/
 │       └── spss-modeler-baseline-automodel/      # 主スキル本体
+│           ├── SKILL.md                          # スキルの目的・完了条件・フロー定義
+│           ├── phase2-summary-report.md          # フェーズ 2 サマリーレポートの仕様
+│           ├── _shared/                          # 共通ユーティリティ
+│           └── templates/                        # Jython / レポートのテンプレート
 ├── inputs/                                       # 分析対象データの配置先
 ├── runs/                                         # 実行ごとの成果物
 └── AGENTS.md                                     # IBM Bob への指示書
@@ -68,6 +72,8 @@ CSV 等の入力データを与えると、IBM Bob が Jython スクリプトを
 
 `inputs/` は git 追跡対象としているため、機微なデータ(顧客情報など)を配置する場合は事前に各自の `.gitignore` で除外することを推奨する。
 
-## ライセンス
+## 注意事項
+本リポジトリは現在テスト段階のものです。動作保証はありません。本番環境での利用は想定していません。ご利用の際は、検証環境等で十分にテストしたうえで、自己責任でご利用ください。
 
-[MIT](LICENSE)
+
+Made with Bob
