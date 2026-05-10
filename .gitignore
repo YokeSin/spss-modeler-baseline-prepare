@@ -1,0 +1,22 @@
+# Claude Code / Cursor 等のローカル設定
+.claude/
+.cursor/
+
+# Python / uv
+__pycache__/
+*.pyc
+.venv/
+.python-version
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+
+# 実行成果物 — 個別実行で生成されるため共有しない
+runs/run_*/
